@@ -15,11 +15,3 @@ module.exports = function (context, req) {
     }
     context.done();
 };
-
-/**
- * Function A takes care of registering the request for shouts from an HTTP request
- *  It saves that request in queue A.
- * Function B is activated from a new message in the queue.
- *  Calls cognitive services and serves the result to the UI.
- *  (Also, a third queue could be used to handle this).
- */
