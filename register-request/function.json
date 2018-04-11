@@ -11,6 +11,13 @@
       "type": "http",
       "direction": "out",
       "name": "res"
+    },
+    {
+      "type": "queue",
+      "name": "incomingRequest",
+      "queueName": "bsfree-incoming",
+      "connection": "AzureWebJobsStorage",
+      "direction": "out"
     }
   ]
 }
