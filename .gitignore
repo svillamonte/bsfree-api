@@ -23,3 +23,8 @@ project.lock.json
 .secrets
 appsettings.json
 local.settings.json
+
+# node.js
+node_modules/
+npm-debug.log
+yarn-error.log
