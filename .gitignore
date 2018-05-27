@@ -23,6 +23,7 @@ project.lock.json
 .secrets
 appsettings.json
 local.settings.json
+config.json
 
 # node.js
 node_modules/
