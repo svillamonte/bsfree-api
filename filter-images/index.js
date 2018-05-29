@@ -1,13 +1,3 @@
-var { analyzeImage, getClient } = require('./imageAnalyzer');
-
-// (async () => {
-//   const hola = await analyzeImage(
-//     'https://k62.kn3.net/taringa/E/8/C/7/0/1/isma62/348.jpg', 
-//     getClient());
-
-//   console.log(hola);
-// })();
-
 module.exports = function (context) {
   const imageUrl = 'https://k62.kn3.net/taringa/E/8/C/7/0/1/isma62/348.jpg';
   
@@ -20,3 +10,21 @@ module.exports = function (context) {
   
   context.done();
 }
+
+// const getLatestShouts = require('./shoutsRetriever');
+// const { analyzeImage, getClient } = require('./imageAnalyzer');
+
+// (async () => {
+//   const shouts = await getLatestShouts();
+
+//   const cognitiveClient = getClient();
+//   shouts.forEach(shout => {
+//     const { url } = shout;
+
+//     console.log(url);
+//     if (url) {
+//       analyzeImage(url, cognitiveClient)
+//         .then(response => console.log(`${url} => ${response}`));
+//     }
+//   });
+// })();
