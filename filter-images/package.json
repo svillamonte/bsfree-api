@@ -10,5 +10,8 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.18.0"
+  },
+  "devDependencies": {
+    "mocha": "^5.2.0"
   }
 }
