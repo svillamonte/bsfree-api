@@ -1,10 +1,10 @@
 {
-  "name": "filter-images",
+  "name": "bsfree-api",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha test/**"
   },
   "author": "",
   "license": "ISC",

@@ -1,5 +1,5 @@
 const assert = require('assert');
-const isDog = require('../dogFilter');
+const isDog = require('../../src/filter-images/dogFilter');
 
 describe('dogFilter', () => {
   describe('isDog', () => {
