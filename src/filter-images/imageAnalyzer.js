@@ -1,14 +1,14 @@
-const { CognitiveSubscriptionKey } = require('./config');
+const { COGNITIVE_SERVICES_SUBSCRIPTION_KEY } = require('./config');
+const COGNITIVE_URL = 'https://australiaeast.api.cognitive.microsoft.com/vision/v1.0/';
+
 const axios = require('axios');
 const isDog = require('./dogFilter');
-
-const COGNITIVE_URL = 'https://australiaeast.api.cognitive.microsoft.com/vision/v1.0/';
 
 function getClient() {
   return axios.create({
     baseURL: COGNITIVE_URL,
     headers: {
-      'Ocp-Apim-Subscription-Key': CognitiveSubscriptionKey,
+      'Ocp-Apim-Subscription-Key': COGNITIVE_SERVICES_SUBSCRIPTION_KEY,
       'Content-Type': 'application/json'
     }
   });

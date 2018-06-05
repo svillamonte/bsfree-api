@@ -1,3 +1,7 @@
+require('dotenv').config();
+
+const { analyzeImage, getClient } = require('./imageAnalyzer');
+
 module.exports = function (context) {
   const imageUrl = 'https://k62.kn3.net/taringa/E/8/C/7/0/1/isma62/348.jpg';
   
