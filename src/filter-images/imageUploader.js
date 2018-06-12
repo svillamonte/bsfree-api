@@ -1,8 +1,9 @@
 const { AZURE_STORAGE_ACCESS_KEY, AZURE_STORAGE_ACCOUNT } = require('./config');
-const CONTAINER_NAME = 'test-container';
+const CONTAINER_NAME = 'filtered-images';
 
 const axios = require('axios');
 const azure = require('azure-storage');
+const buildFilename = require('./filenameBuilder');
 
 function storageCallback(error) {
   if (error) {
@@ -30,7 +31,7 @@ async function uploadImage(url) {
 
     response.data.pipe(storage.createWriteStreamToBlockBlob(
       CONTAINER_NAME, 
-      'pichichon.jpg', 
+      buildFilename(url), 
       blobSettings, 
       storageCallback));
   } catch (error) {
