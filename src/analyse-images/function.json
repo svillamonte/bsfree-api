@@ -1,0 +1,12 @@
+{
+  "disabled": false,
+  "bindings": [
+    {
+      "name": "imageUrl",
+      "type": "queueTrigger",
+      "direction": "in",
+      "queueName": "latest-shouts",
+      "connection": "AzureWebJobsStorage"
+    }
+  ]
+}
