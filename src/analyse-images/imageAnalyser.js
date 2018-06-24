@@ -4,7 +4,7 @@ const { CognitiveServicesCredentials } = require('ms-rest-azure');
 const { ComputerVisionAPIClient } = require('azure-cognitiveservices-computervision');
 const isDog = require('./dogFilter');
 
-async function analyseImage(url) {
+function analyseImage(url) {
   const credentials = new CognitiveServicesCredentials(COGNITIVE_SERVICES_KEY);
   const client = new ComputerVisionAPIClient(credentials, 'australiaeast');
 
@@ -13,9 +13,15 @@ async function analyseImage(url) {
     details: [ 'Celebrities' ]
   };
 
-  const imageAnalysis = await client.analyzeImage(url, options);
-  
-  return isDog(imageAnalysis);
+  const promise = new Promise((resolve, reject) => {
+    client.analyzeImage(url, options)
+      .then(imageAnalysis => 
+        resolve(isDog(imageAnalysis)))
+      .catch(error => 
+        reject(error));
+  });
+
+  return promise;
 }
 
 module.exports = analyseImage;
