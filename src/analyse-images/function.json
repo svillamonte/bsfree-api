@@ -2,11 +2,18 @@
   "disabled": false,
   "bindings": [
     {
-      "name": "imageUrl",
+      "name": "shout",
       "type": "queueTrigger",
-      "direction": "in",
       "queueName": "latest-shouts",
-      "connection": "AzureWebJobsStorage"
+      "connection": "AzureWebJobsStorage",
+      "direction": "in"
+    },
+    {
+      "name": "whitelistedShout",
+      "type": "queue",
+      "queueName": "whitelisted-shouts",
+      "connection": "AzureWebJobsStorage",
+      "direction": "out"
     }
   ]
 }

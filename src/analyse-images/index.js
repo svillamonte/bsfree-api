@@ -1,7 +1,23 @@
-const { COGNITIVE_SERVICES_KEY } = require('../common/settings');
+const analyseImage = require('./imageAnalyser');
 
-module.exports = function (context, imageUrl) {
-    context.log('JavaScript queue trigger function processed work item', imageUrl);
-    context.log(COGNITIVE_SERVICES_KEY);
-    context.done();
+module.exports = function (context, shout) {
+  const { url } = shout;
+
+  context.log('Beginning image analysis.');    
+  analyseImage(url)
+    .then(result => {
+      if (result) {
+        context.log('Image checks out');
+        context.bindings.whitelistedShout = shout;
+      }
+      else {
+        context.log('Image does not pass');
+      }
+
+      context.done();
+    })
+    .catch(error => {
+      context.log.error(error);
+      context.done();
+    });
 };

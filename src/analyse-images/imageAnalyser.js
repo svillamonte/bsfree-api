@@ -6,11 +6,11 @@ const isDog = require('./dogFilter');
 
 async function analyseImage(url) {
   const credentials = new CognitiveServicesCredentials(COGNITIVE_SERVICES_KEY);
-  const client = new ComputerVisionAPIClient(credentials, "australiaeast");
+  const client = new ComputerVisionAPIClient(credentials, 'australiaeast');
 
   const options = {
-    visualFeatures: [ "Categories", "Tags", "Adult" ],
-    details: [ "Celebrities" ]
+    visualFeatures: [ 'Categories', 'Tags', 'Adult' ],
+    details: [ 'Celebrities' ]
   };
 
   const imageAnalysis = await client.analyzeImage(url, options);
