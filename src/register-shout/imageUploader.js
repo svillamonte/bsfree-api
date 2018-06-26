@@ -10,29 +10,30 @@ function uploadImage(url) {
     AZURE_STORAGE_ACCOUNT,
     AZURE_STORAGE_KEY
   );
-
-  const blobSettings = {
-    blockIdPrefix: 'block'
-  };
   const axiosSettings = {
     method: 'GET',
     responseType: 'stream',
     url
   };
-
-  const callback = (error, resolve, reject) => {
-    if (error) reject(error);
-    resolve();
-  }
+  
+  const blobName = buildFilename(url);
+  const blobSettings = {
+    blockIdPrefix: 'block'
+  };
 
   const promise = new Promise((resolve, reject) => {
+    const callback = (error) => {
+      if (error) reject(error);
+      resolve(storage.getUrl(CONTAINER_NAME, blobName));
+    };
+
     axios(axiosSettings)
       .then(response => 
         response.data.pipe(storage.createWriteStreamToBlockBlob(
           CONTAINER_NAME,
-          buildFilename(url),
+          blobName,
           blobSettings,
-          error => callback(error, resolve, reject)
+          callback
         )))
       .catch(error => reject(error));
   });
