@@ -6,6 +6,13 @@
       "type": "timerTrigger",
       "direction": "in",
       "schedule": "0 0 */6 * * *"
+    },
+    {
+      "name": "shouts",
+      "type": "queue",
+      "queueName": "latest-shouts",
+      "connection": "AzureWebJobsStorage",
+      "direction": "out"
     }
   ]
 }

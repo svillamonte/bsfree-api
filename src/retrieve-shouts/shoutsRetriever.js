@@ -1,7 +1,7 @@
 const TARINGA_URL = 'http://api.taringa.net/';
 
 const axios = require('axios');
-const normaliseShouts = require('./shoutsNormaliser');
+const cleanShouts = require('./shoutCleaner');
 
 function getLatestShouts() {
   const axiosSettings = {
@@ -13,9 +13,9 @@ function getLatestShouts() {
   const promise = new Promise((resolve, reject) => {
     axios(axiosSettings)
       .then(response => {
-        const normalisedList = normaliseShouts(response.data);
+        const cleanedList = cleanShouts(response.data);
 
-        resolve(normalisedList);
+        resolve(cleanedList);
       })
       .catch(error => reject(error));
   });
