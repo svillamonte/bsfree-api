@@ -1,5 +1,5 @@
-const { assert, expect } = require('chai');
-const buildFilename = require('../../src/filter-images/filenameBuilder');
+import { assert, expect } from 'chai';
+import buildFilename from '../../src/register-shout/filenameBuilder';
 
 describe('filenameBuilder', () => {
   describe('#buildFilename()', () => {
