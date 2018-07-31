@@ -1,5 +1,5 @@
 import { assert, expect } from 'chai';
-import buildFilename from '../../src/register-shout/filenameBuilder';
+import buildFilename from '~/register-shout/filenameBuilder';
 
 describe('filenameBuilder', () => {
   describe('#buildFilename()', () => {

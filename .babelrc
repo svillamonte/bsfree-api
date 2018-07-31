@@ -3,6 +3,10 @@
     "env"
   ],
   "plugins": [
-    "add-module-exports"
+    "add-module-exports",
+    [ 
+      "babel-plugin-root-import", 
+      { "rootPathSuffix": "src" } 
+    ]
   ]
 }

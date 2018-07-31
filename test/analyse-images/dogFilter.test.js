@@ -1,5 +1,5 @@
 import { assert } from 'chai';
-import isDog from '../../src/analyse-images/dogFilter';
+import isDog from '~/analyse-images/dogFilter';
 
 describe('dogFilter', () => {
   describe('#isDog()', () => {
