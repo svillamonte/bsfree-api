@@ -1,4 +1,4 @@
-import assert from 'assert';
+import { assert } from 'chai';
 import isDog from '../../src/analyse-images/dogFilter';
 
 describe('dogFilter', () => {
@@ -9,7 +9,7 @@ describe('dogFilter', () => {
       };
 
       const result = isDog(data);
-      assert.equal(result, false);
+      assert.isFalse(result);
     });
 
     it('returns false if dog tag is below threshold', () => {
@@ -27,7 +27,7 @@ describe('dogFilter', () => {
       };
 
       const result = isDog(data);
-      assert.equal(result, false);
+      assert.isFalse(result);
     });
 
     it('returns true if dog tag is above threshold', () => {
@@ -45,7 +45,7 @@ describe('dogFilter', () => {
       };
 
       const result = isDog(data);
-      assert.equal(result, true);
+      assert.isTrue(result);
     });
   });
 });
