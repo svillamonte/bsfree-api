@@ -1,8 +1,8 @@
-const { COGNITIVE_SERVICES_KEY } = require('../common/settings');
+import { COGNITIVE_SERVICES_KEY } from '../common/settings';
 
-const { CognitiveServicesCredentials } = require('ms-rest-azure');
-const { ComputerVisionAPIClient } = require('azure-cognitiveservices-computervision');
-const isDog = require('./dogFilter');
+import { CognitiveServicesCredentials } from 'ms-rest-azure';
+import { ComputerVisionAPIClient } from 'azure-cognitiveservices-computervision';
+import isDog from './dogFilter';
 
 function analyseImage(url) {
   const credentials = new CognitiveServicesCredentials(COGNITIVE_SERVICES_KEY);
@@ -24,4 +24,4 @@ function analyseImage(url) {
   return promise;
 }
 
-module.exports = analyseImage;
+export default analyseImage;

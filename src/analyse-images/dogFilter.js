@@ -1,7 +1,7 @@
 const TAG_NAME = 'dog';
 const CONFIDENCE_THRESHOLD = 0.5;
 
-module.exports = function isDog(imageAnalysis) {
+export default function (imageAnalysis) {
   const { tags } = imageAnalysis;
 
   var dogTag = tags.find(tag => tag.name === TAG_NAME);
@@ -10,4 +10,4 @@ module.exports = function isDog(imageAnalysis) {
   }
 
   return false;
-}
+};

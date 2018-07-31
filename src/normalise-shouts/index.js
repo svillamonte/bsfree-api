@@ -1,7 +1,7 @@
-const checksOut = require('./shoutNormaliser');
-const enqueueShout = require('./shoutEnqueuer');
+import checksOut from './shoutNormaliser';
+import enqueueShout from './shoutEnqueuer';
 
-module.exports = function (context, shout) {
+export default function (context, shout) {
   context.log('Applying filters to shout...');
 
   checksOut(shout)

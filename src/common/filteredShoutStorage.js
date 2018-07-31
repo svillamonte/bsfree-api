@@ -1,7 +1,7 @@
-const { AZURE_STORAGE_KEY, AZURE_STORAGE_ACCOUNT } = require('./settings');
-const TABLE_NAME = 'FilteredShouts';
+import { AZURE_STORAGE_KEY, AZURE_STORAGE_ACCOUNT } from './settings';
+import azure from 'azure-storage';
 
-const azure = require('azure-storage');
+const TABLE_NAME = 'FilteredShouts';
 const tableService = azure.createTableService(
   AZURE_STORAGE_ACCOUNT, 
   AZURE_STORAGE_KEY
@@ -28,6 +28,6 @@ function getByRowKey(rowKey) {
   return promise;
 }
 
-module.exports = {
+export {
   getByRowKey
 };

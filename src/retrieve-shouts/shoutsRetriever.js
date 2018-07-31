@@ -1,7 +1,7 @@
-const TARINGA_URL = 'http://api.taringa.net/';
+import axios from 'axios';
+import cleanShouts from './shoutCleaner';
 
-const axios = require('axios');
-const cleanShouts = require('./shoutCleaner');
+const TARINGA_URL = 'http://api.taringa.net/';
 
 function getLatestShouts() {
   const axiosSettings = {
@@ -23,4 +23,4 @@ function getLatestShouts() {
   return promise;  
 }
 
-module.exports = getLatestShouts;
+export default getLatestShouts;

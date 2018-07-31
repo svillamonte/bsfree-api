@@ -1,6 +1,6 @@
-const analyseImage = require('./imageAnalyser');
+import analyseImage from './imageAnalyser';
 
-module.exports = function (context, shout) {
+export default function (context, shout) {
   const { url } = shout;
 
   context.log('Beginning image analysis.');    

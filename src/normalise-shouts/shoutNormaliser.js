@@ -1,5 +1,5 @@
-const newShoutFilter = require('./newShoutFilter');
-const imageTypeFilter = require('./imageTypeFilter');
+import newShoutFilter from './newShoutFilter';
+import imageTypeFilter from './imageTypeFilter';
 
 const asyncFilters = [
   newShoutFilter
@@ -34,4 +34,4 @@ function normaliseShout(shout) {
   return promise;
 }
 
-module.exports = normaliseShout;
+export default normaliseShout;

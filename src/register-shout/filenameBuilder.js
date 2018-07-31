@@ -1,4 +1,4 @@
-module.exports = function buildFilename(url) {
+export default function (url) {
   const currentTime = new Date().getTime();
   
   const dotIndex = url.lastIndexOf('.');

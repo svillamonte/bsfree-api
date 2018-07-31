@@ -1,8 +1,8 @@
-const { AZURE_STORAGE_KEY, AZURE_STORAGE_ACCOUNT } = require('./../common/settings');
+import { AZURE_STORAGE_KEY, AZURE_STORAGE_ACCOUNT } from './../common/settings';
+import azure from 'azure-storage';
+
 const QUEUE_NAME = 'normalised-shouts';
 const BASE_VISIBILITY_TIMEOUT = 60;
-
-const azure = require('azure-storage');
 const { QueueMessageEncoder } = azure;
 
 function buildRequestOptions(shout) {
@@ -38,4 +38,4 @@ function enqueueShout(shout) {
   return promise;  
 }
 
-module.exports = enqueueShout;
+export default enqueueShout;

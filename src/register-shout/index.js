@@ -1,7 +1,7 @@
-const uploadImage = require('./imageUploader');
-const registerShout = require('./shoutRegisterer');
+import uploadImage from './imageUploader';
+import registerShout from './shoutRegisterer';
 
-module.exports = function (context, shout) {
+export default function (context, shout) {
   const { url } = shout;
   
   try {

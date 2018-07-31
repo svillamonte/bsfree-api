@@ -1,8 +1,8 @@
-const { AZURE_STORAGE_KEY, AZURE_STORAGE_ACCOUNT } = require('./../common/settings');
-const TABLE_NAME = 'FilteredShouts';
+import { AZURE_STORAGE_KEY, AZURE_STORAGE_ACCOUNT } from './../common/settings';
+import azure from 'azure-storage';
+import getCurrentDate from './currentDateBuilder';
 
-const azure = require('azure-storage');
-const getCurrentDate = require('./currentDateBuilder');
+const TABLE_NAME = 'FilteredShouts';
 
 function createShoutEntity(shout, imageBlobUri) {
   const { entityGenerator } = azure.TableUtilities;
@@ -38,4 +38,4 @@ function registerShout(shout, imageBlobUri) {
   return promise;
 };
 
-module.exports = registerShout;
+export default registerShout;

@@ -1,9 +1,9 @@
+import axios from 'axios';
+import azure from 'azure-storage';
+import buildFilename from './filenameBuilder';
+
 const { AZURE_STORAGE_KEY, AZURE_STORAGE_ACCOUNT } = require('./../common/settings');
 const CONTAINER_NAME = 'filtered-images';
-
-const axios = require('axios');
-const azure = require('azure-storage');
-const buildFilename = require('./filenameBuilder');
 
 function uploadImage(url) {
   const storage = azure.createBlobService(
@@ -41,4 +41,4 @@ function uploadImage(url) {
   return promise;
 }
 
-module.exports = uploadImage;
+export default uploadImage;

@@ -1,6 +1,6 @@
-const { getByRowKey } = require('../common/filteredShoutStorage');
+import { getByRowKey } from '../common/filteredShoutStorage';
 
-module.exports = function(shout) {
+export default function(shout) {
   // If exists => filter fails
   return getByRowKey(shout.id)
     .then(results => 

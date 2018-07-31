@@ -1,6 +1,6 @@
-var retrieveShouts = require('./shoutsRetriever');
+import retrieveShouts from './shoutsRetriever';
 
-module.exports = function (context) {
+export default function (context) {
   context.log('Retrieving shouts...');
 
   retrieveShouts()
