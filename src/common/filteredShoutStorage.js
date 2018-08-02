@@ -28,6 +28,16 @@ function getByRowKey(rowKey) {
   return promise;
 }
 
+const insertShout = (shoutEntity) => new Promise((resolve, reject) => {
+  const callback = (error) => {
+    if (error) reject(error);
+    resolve();
+  };
+
+  tableService.insertEntity(TABLE_NAME, shoutEntity, callback);
+});
+
 export {
-  getByRowKey
+  getByRowKey,
+  insertShout
 };

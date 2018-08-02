@@ -1,8 +1,6 @@
-import { AZURE_STORAGE_KEY, AZURE_STORAGE_ACCOUNT } from './../common/settings';
 import azure from 'azure-storage';
 import getCurrentDate from './currentDateBuilder';
-
-const TABLE_NAME = 'FilteredShouts';
+import { insertShout } from '../common/filteredShoutStorage';
 
 function createShoutEntity(shout, imageBlobUri) {
   const { entityGenerator } = azure.TableUtilities;
@@ -19,23 +17,13 @@ function createShoutEntity(shout, imageBlobUri) {
 }
 
 function registerShout(shout, imageBlobUri) {
-  const tableStorage = azure.createTableService(
-    AZURE_STORAGE_ACCOUNT,
-    AZURE_STORAGE_KEY
-  );
+  const shoutEntity = createShoutEntity(shout, imageBlobUri);
   
-  const promise = new Promise((resolve, reject) => {
-    const shoutEntity = createShoutEntity(shout, imageBlobUri);
-
-    const callback = (error) => {
-      if (error) reject(error);
-      resolve();
-    };
-
-    tableStorage.insertEntity(TABLE_NAME, shoutEntity, callback);
+  return new Promise((resolve, reject) => {
+    insertShout(shoutEntity)
+      .then(() => resolve())
+      .catch(() => reject())
   });
-
-  return promise;
 };
 
 export default registerShout;
