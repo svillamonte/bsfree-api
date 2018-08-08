@@ -5,7 +5,7 @@ describe('dogFilter', () => {
   describe('#isDog()', () => {
     it('returns false if no tags', () => {
       const data = {
-        tags: []
+        tags: [],
       };
 
       const result = isDog(data);
@@ -17,13 +17,13 @@ describe('dogFilter', () => {
         tags: [
           {
             name: 'something',
-            confidence: 0.9
+            confidence: 0.9,
           },
           {
             name: 'dog',
-            confidence: 0.3
-          }
-        ]
+            confidence: 0.3,
+          },
+        ],
       };
 
       const result = isDog(data);
@@ -35,13 +35,13 @@ describe('dogFilter', () => {
         tags: [
           {
             name: 'something',
-            confidence: 0.9
+            confidence: 0.9,
           },
           {
             name: 'dog',
-            confidence: 0.51
-          }
-        ]
+            confidence: 0.51,
+          },
+        ],
       };
 
       const result = isDog(data);

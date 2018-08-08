@@ -1,23 +1,27 @@
 import analyseImage from './imageAnalyser';
 
-export default function (context, shout) {
+/**
+ * Handles the image analysis function. If image passes, it is added to the whitelist.
+ * @param {any} context
+ * @param {any} shout
+ */
+export default function(context, shout) {
   const { url } = shout;
 
-  context.log('Beginning image analysis.');    
+  context.log('Beginning image analysis.');
   analyseImage(url)
-    .then(result => {
+    .then((result) => {
       if (result) {
         context.log('Image checks out');
         context.bindings.whitelistedShout = shout;
-      }
-      else {
+      } else {
         context.log('Image does not pass');
       }
 
       context.done();
     })
-    .catch(error => {
+    .catch((error) => {
       context.log.error(error);
       context.done();
     });
-};
+}

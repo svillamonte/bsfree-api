@@ -1,12 +1,7 @@
 {
-  "presets": [
-    "env"
-  ],
+  "presets": ["env"],
   "plugins": [
     "add-module-exports",
-    [ 
-      "babel-plugin-root-import", 
-      { "rootPathSuffix": "src" } 
-    ]
+    ["babel-plugin-root-import", { "rootPathSuffix": "src" }]
   ]
 }
