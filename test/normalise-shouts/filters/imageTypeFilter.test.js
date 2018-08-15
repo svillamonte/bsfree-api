@@ -1,5 +1,5 @@
 import { assert, expect } from 'chai';
-import imageTypeFilter from '~/normalise-shouts/imageTypeFilter';
+import imageTypeFilter from '~/normalise-shouts/filters/imageTypeFilter';
 
 describe('imageTypeFilter', () => {
   describe('#filter()', () => {

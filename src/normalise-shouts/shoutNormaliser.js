@@ -1,5 +1,5 @@
-import newShoutFilter from './newShoutFilter';
-import imageTypeFilter from './imageTypeFilter';
+import newShoutFilter from './filters/newShoutFilter';
+import imageTypeFilter from './filters/imageTypeFilter';
 import evalFilters from './filtersEvaluator';
 
 const asyncFilters = [newShoutFilter];

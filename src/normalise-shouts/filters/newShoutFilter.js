@@ -1,4 +1,4 @@
-import { getByRowKey } from '../common/filteredShoutStorage';
+import { getByRowKey } from '../../common/filteredShoutStorage';
 
 /**
  * Checks if shout exists in storage to avoid re-processing it.
