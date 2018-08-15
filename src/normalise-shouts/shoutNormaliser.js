@@ -1,37 +1,21 @@
 import newShoutFilter from './newShoutFilter';
 import imageTypeFilter from './imageTypeFilter';
+import evalFilters from './filtersEvaluator';
 
-const asyncFilters = [
-  newShoutFilter
-];
+const asyncFilters = [newShoutFilter];
+const syncFilters = [imageTypeFilter];
 
-const syncFilters = [
-  imageTypeFilter
-];
-
-function evalSyncFilters(asyncResults, shout) {
-  if (asyncResults.some(result => !result)) {
-    return false;
-  }
-
-  const results = syncFilters.map(filter => filter(shout));
-  return !results.some(result => !result);
-}
-
-function normaliseShout(shout) {
-  var asyncResults = asyncFilters.map(filter => filter(shout));
-
+/**
+ * Evaluates filters against the shout
+ * @param {object} shout
+ * @return {Promise}
+ */
+export default (shout) => {
   const promise = new Promise((resolve, reject) => {
-    Promise.all(asyncResults)
-      .then(results => {
-        const finalResult = evalSyncFilters(results, shout);
+    evalFilters(shout, asyncFilters, syncFilters)
+      .then((result) => resolve(result))
+      .catch(() => reject(true));
+  });
 
-        resolve(finalResult);
-      })
-      .catch(() => reject(true));  
-  })
-  
   return promise;
-}
-
-export default normaliseShout;
+};
