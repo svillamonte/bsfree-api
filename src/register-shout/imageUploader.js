@@ -1,24 +1,23 @@
-import axios from 'axios';
-import azure from 'azure-storage';
+import { createBlobService } from 'azure-storage';
 import buildFilename from './filenameBuilder';
+import getImageStream from './imageStreamDownloader';
 
-const { AZURE_STORAGE_KEY, AZURE_STORAGE_ACCOUNT } = require('./../common/settings');
+const {
+  AZURE_STORAGE_KEY,
+  AZURE_STORAGE_ACCOUNT,
+} = require('./../common/settings');
 const CONTAINER_NAME = 'filtered-images';
+const storage = createBlobService(AZURE_STORAGE_ACCOUNT, AZURE_STORAGE_KEY);
 
+/**
+ * Gets the current date and returns it in yyyyMMdd format
+ * @param {string} url
+ * @return {string}
+ */
 function uploadImage(url) {
-  const storage = azure.createBlobService(
-    AZURE_STORAGE_ACCOUNT,
-    AZURE_STORAGE_KEY
-  );
-  const axiosSettings = {
-    method: 'GET',
-    responseType: 'stream',
-    url
-  };
-  
   const blobName = buildFilename(url);
   const blobSettings = {
-    blockIdPrefix: 'block'
+    blockIdPrefix: 'block',
   };
 
   const promise = new Promise((resolve, reject) => {
@@ -27,15 +26,18 @@ function uploadImage(url) {
       resolve(storage.getUrl(CONTAINER_NAME, blobName));
     };
 
-    axios(axiosSettings)
-      .then(response => 
-        response.data.pipe(storage.createWriteStreamToBlockBlob(
-          CONTAINER_NAME,
-          blobName,
-          blobSettings,
-          callback
-        )))
-      .catch(error => reject(error));
+    getImageStream(url)
+      .then((response) =>
+        response.data.pipe(
+          storage.createWriteStreamToBlockBlob(
+            CONTAINER_NAME,
+            blobName,
+            blobSettings,
+            callback
+          )
+        )
+      )
+      .catch((error) => reject(error));
   });
 
   return promise;

@@ -1,4 +1,4 @@
-import { assert, expect } from 'chai';
+import { expect } from 'chai';
 import evalFilters from '~/normalise-shouts/filtersEvaluator';
 
 const asyncFilterTrue = (shout) =>
