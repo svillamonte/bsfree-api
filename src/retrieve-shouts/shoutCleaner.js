@@ -1,5 +1,8 @@
-// queue_order is used as a basic throttling strategy when enqueuing
-// normalised items, before the image analysis kicks in.
+/**
+ * Trims the original shout object to properties we care about
+ * @param {Array} shouts
+ * @return {Array}
+ */
 export default function(shouts) {
   return shouts.map((shout, i) => {
     const { id, body } = shout;
@@ -11,7 +14,7 @@ export default function(shouts) {
       body,
       nick,
       url,
-      queueOrder: i,
+      queueOrder: i, // basic throttling strategy for image analysis
     };
   });
 }
