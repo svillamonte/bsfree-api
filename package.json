@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "babel src --out-dir dist --copy-files",
+    "build": "eslint src test && babel src --out-dir dist --copy-files",
     "test": "mocha --require babel-core/register test/**/*"
   },
   "author": "",
