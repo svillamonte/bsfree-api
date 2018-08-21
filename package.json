@@ -3,9 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "repository": {
+    "url": "https://github.com/svillamonte/bsfree-api"
+  },
   "scripts": {
     "build": "eslint src test && babel src --out-dir dist --copy-files",
-    "test": "mocha --require babel-core/register test/**/*"
+    "test": "mocha --require babel-core/register test/**/*",
+    "test-ci": "mocha --require babel-core/register test/**/* --reporter mocha-junit-reporter --reporter-options mochaFile=./TestResults/TEST-RESULT.xml"
   },
   "author": "",
   "license": "ISC",
@@ -28,6 +32,7 @@
     "eslint": "^5.2.0",
     "eslint-config-google": "^0.9.1",
     "mocha": "^5.2.0",
+    "mocha-junit-reporter": "^1.18.0",
     "prettier-eslint": "^8.8.2"
   }
 }
