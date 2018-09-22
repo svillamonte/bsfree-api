@@ -9,17 +9,17 @@ const tableService = azure.createTableService(
 
 /**
  * Gets the filtered shout from storage
- * @param {string} rowKey
+ * @param {string} shoutId
  * @return {Promise}
  */
-function getByRowKey(rowKey) {
+function getByShoutId(shoutId) {
   const { TableQuery, TableUtilities } = azure;
 
   const query = new TableQuery().where(
     TableQuery.stringFilter(
-      'RowKey',
+      'ShoutId',
       TableUtilities.QueryComparisons.EQUAL,
-      rowKey
+      shoutId
     )
   );
 
@@ -50,4 +50,4 @@ const insertShout = (shoutEntity) =>
     tableService.insertEntity(TABLE_NAME, shoutEntity, callback);
   });
 
-export { getByRowKey, insertShout };
+export { getByShoutId, insertShout };

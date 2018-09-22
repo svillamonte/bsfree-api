@@ -1,4 +1,4 @@
-import { getByRowKey } from '../../common/filteredShoutStorage';
+import { getByShoutId } from '../../common/filteredShoutStorage';
 
 /**
  * Checks if shout exists in storage to avoid re-processing it.
@@ -6,7 +6,7 @@ import { getByRowKey } from '../../common/filteredShoutStorage';
  * @return {boolean} True if shout doesn't exist in storage.
  */
 export default function(shout) {
-  return getByRowKey(shout.id)
+  return getByShoutId(shout.id)
     .then((results) => (results.length > 0 ? false : true))
     .catch(() => true);
 }
