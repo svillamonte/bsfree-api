@@ -50,4 +50,27 @@ const insertShout = (shoutEntity) =>
     tableService.insertEntity(TABLE_NAME, shoutEntity, callback);
   });
 
-export { getByShoutId, insertShout };
+/**
+ * Retrieves the top pageSize shouts
+ * @param {object} continuationToken Table storage token to allow pagination.
+ * @param {number} pageSize Number of records to retrieve.
+ * @return {Promise} Promise with entries and continuation token.
+ */
+const getLatestShouts = (continuationToken, pageSize) => {
+  const { TableQuery } = azure;
+
+  const query = new TableQuery().top(pageSize);
+
+  const promise = new Promise((resolve, reject) => {
+    const callback = (error, result) => {
+      if (error) reject(error);
+      resolve(result);
+    };
+
+    tableService.queryEntities(TABLE_NAME, query, continuationToken, callback);
+  });
+
+  return promise;
+};
+
+export { getByShoutId, insertShout, getLatestShouts };
