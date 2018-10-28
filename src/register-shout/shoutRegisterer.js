@@ -1,5 +1,5 @@
 import { TableUtilities } from 'azure-storage';
-import { getCurrentDate, getPaddedTicksToMaxDate } from './dateHelper';
+import { getNowTicks, getYearTicks } from './dateHelper';
 import { insertShout } from '../common/filteredShoutStorage';
 
 /**
@@ -13,8 +13,8 @@ function createShoutEntity(shout, imageBlobUri) {
   const { id, nick, body } = shout;
 
   return {
-    PartitionKey: entityGenerator.String(getCurrentDate()),
-    RowKey: entityGenerator.String(getPaddedTicksToMaxDate()),
+    PartitionKey: entityGenerator.String(getYearTicks()),
+    RowKey: entityGenerator.String(getNowTicks()),
     ShoutId: entityGenerator.String(id),
     Nick: entityGenerator.String(nick),
     Body: entityGenerator.String(body),
